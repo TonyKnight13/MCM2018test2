@@ -318,9 +318,59 @@ The total flow chart is as follows:
 From the above analysis, it can be seen that the probability of noise is low, and the adaptive median filter can get the results quickly, without the need to increase the size of the window. On the other hand, the probability of noise is higher, and it needs to increase the window size of the filter, which is the characteristic of a median filter which requires a larger filter window size when meets more noise points.
 
 \section{Analysis of Results}
-\subsection{Problem 1}
+\subsection{Problem 1,2}
 
-\subsection{Problem 2}
+We mainly consider the compression ratio, peak signal-to noise ratio and subjective image quality judgment.
+
+\begin{table}[h]
+\centering
+\caption{model \Rmnum{1}: the result of square images }
+\begin{tabular}{|c|c|c|c|}
+\hline
+Quantitative Factors & Size & Compression Ratio & Signal to Noise Ratio\\
+\hline
+-0.5 & 128X128X3 & 6.9888 & 35.3438\\
+\hline
+- 0.5 & 256x256x3 & 9.2040& 40.8424\\
+\hline
+- 3 & 256x256x3& 17.5853& 33.8889\\
+\hline
+- 10 & 256x256x3& 25.0189& 30.0513\\
+\hline
+- 0.5& 512x512x3& 7.8405 & 35.8248 \\
+\hline
+- 3 &  512x512x3& 17.3444& 33.1444 \\
+\hline
+- 10 & 512x512x3& 25.4035 &29.7977 \\
+\hline
+\end{tabular}
+\label{tab2}
+\end{table}
+
+\begin{table}[h]
+  \centering
+  \caption{model \Rmnum{1}: the result of general images }
+  \begin{tabular}{|c|c|c|c|}
+  \hline
+  Quantitative Factors & Size & Compression Ratio & Signal to Noise Ratio\\
+  \hline
+  - 0.5 &512x512x3& 7.8405 & 35.8248 \\
+  \hline
+  - 3 &  512x512x3& 17.3444 &33.1444 \\
+  \hline
+  - 10 & 512x512x3& 25.4035& 29.7977 \\
+  \hline
+  \end{tabular}
+  \label{tab2}
+  \end{table}
+
+We experimented with the model. It can be seen that the larger the quantification factor is, the larger the image compression ratio is, the smaller the signal-to-noise ratio is, and the worse the picture quality is. The model is not very different in different sizes of pictures. Performance indicators may fluctuate due to different sizes of images.
+The SNR is basically stable between 29-41, indicating that the extracted image information has not lost much. The compression ratio is between 7 and 25, and the compression performance is good.
+A high quality compression can be performed with a quantification factor of 0.5. In order to reduce the size of storage volume, more than 10 quantitative factors can be used, but the loss of image information is large.
+
+\subsection{Problem 3}
+
+
 
 \section{Model Evaluation}
 \subsection{Model \Rmnum{1}}
