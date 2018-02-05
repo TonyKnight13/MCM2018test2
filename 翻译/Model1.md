@@ -54,3 +54,4 @@ Code ${\displaystyle C\left(W\right)=(c_{1},c_{2},\cdots ,c_{n})}$, which is the
 Goal.
 Let  be the weighted path length of code . Condition:  for any code . 
 [图片]
+For the above steps, the steps before the Zig-Zag scan is a lossy image compression to eliminate data redundancy, which is unble to recover after inverse transform. the steps after the Zig-Zag scan is a lossless image compression to eliminate encoding redundancy, which is able to reduce storage space needed.

@@ -1,10 +1,22 @@
 \documentclass{mcmthesis}
+
+  \makeatletter
+  \newcommand{\rmnum}[1]{\romannumeral #1}
+  \newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+  \makeatother
+
 \mcmsetup{CTeX = false,   % 使用 CTeX 套装时，设置为 true
-        tcn = 0000, problem = A,
+        tcn = 0025, problem = A,
         sheet = true, titleinsheet = true, keywordsinsheet = true,
         titlepage = false, abstract = true}
 \usepackage{palatino}
 \usepackage{lipsum}
+\usepackage{amsmath}  
+\usepackage{amssymb}
+\usepackage{indentfirst} 
+
+\setlength{\parindent}{1.5em}
+
 \title{unsure}
 \begin{document}
 \begin{abstract}
@@ -15,49 +27,53 @@ keyword1; keyword2
 \end{abstract}
 \maketitle
 \section{Introduction}
+\subsection{Background}
+
+With the rapid development of artificial intelligence, there are more and more applications of images, such as face recognition and automatic recognition. There are two things that cannot be ignored before using images for related tasks.The first is image compression, in order to reduce the redundant information in image data and to store and transmit data in a more efficient format; the second is image restoration, which USES certain techniques to reproduce the missing information in the image.  These two technologies have laid a foundation for the rapid development of relevant image application technologies. In this context, we want to be able to build a process model to implement these two technologies.
+
 \subsection{Restatement of Problem}
 
-\subsection{Problem Background}
+We are required to build some mathematical model to process the data of images:
+\begin{itemize}
+\item A lossy image compression model
+\item An inpainting model to recover the image with 20\% missing information.
+\item A model to compress a surveillance video in a shopping mall.
+\end{itemize}
 
 \subsection{Overview of Our Work}
 
+First, we find a few key points in these questions :
+\begin{itemize}
+  \item The image compression we need to do is lossy compression.
+  \item How to make image compression model suitable for general situation?
+  \item What is the relationship between the models we want to build?
+  \item Does the missing data proportion have special meaning?
+  \item What is the measure of restoration?
+  \item All missing pixel values for a given image are non-zero.
+  \item How to deal with the static background of video?
+\end{itemize}
+
 \section{Assumptions}
+\begin{itemize}
+  \item We are dealing with bitmaps rather than vectors.
+  \item Assume that the missing types of information in question 3 are the same as those in the case diagram.
+  \item Assume that the image the image compression algorithm to process is not too extreme for the its size, that is, the image size is not too small or too large.
+  \item Assume the image compression algorithm is aimed at the image of RGB color.
+  \item Assume that the image compression requires not to lose too much information, not considering the high compression of the signal loss.
+\end{itemize}
 
 \section{Notations}
 
 \section{Our Model}
-
-\lipsum[2]
-\begin{itemize}
-\item minimizes the discomfort to the hands, or
-\item maximizes the outgoing velocity of the ball.
-\end{itemize}
-We focus exclusively on the second definition.
-
-\begin{itemize}
-\item the initial velocity and rotation of the ball,
-\item the initial velocity and rotation of the bat,
-\item the relative position and orientation of the bat and ball, and
-\item the force over time that the hitter hands applies on the handle.
-\end{itemize}
-\lipsum[3]
-\begin{itemize}
-\item the angular velocity of the bat,
-\item the velocity of the ball, and
-\item the position of impact along the bat.
-\end{itemize}
-\lipsum[4]
-\emph{center of percussion} [Brody 1986], \lipsum[5]
-
-\begin{Theorem} \label{thm:latex}
-\LaTeX
-\end{Theorem}
-\begin{Lemma} \label{thm:tex}
-\TeX .
-\end{Lemma}
-\begin{proof}
-The proof of theorem.
-\end{proof}
+\subsection{Model \Rmnum{1}}
+For a digital image using RGB color mode, we first separate the three color channels of red, green and blue.The image data of each channel can be represented by a 2-dimensional matrix. Each element in the 2-dimensional matrix corresponds to one pixel, and its value is the pixel's gray value. After obtaining the three 2-dimensional matrices, We first convert it from RGB to YCbCr. Where Y is the brightness component, Cb is the blue color component, and Cr is the red color component.The human eye is more sensitive to the Y component, so it will be less noticeable to the naked eye when subsampling the chromaticity component to reduce the chromaticity component.YCbCr color space and RGB color space conversion formulas are as follows:
+\begin{equation}
+\begin{cases}Y=0.299R+0.587G+0.114B\\Cb=0.564(B-Y)\\Cr=0.713(R-Y)\end{cases}
+\end{equation}
+\begin{equation}
+\begin{cases}R=Y+1.402Cr\\G=Y-0.344Cb-0.714Cr\\B=Y+1.772Cb\end{cases}
+\end{equation}
+We decide use YCbCr 4:2:0 format,which is by far the most common color representation used in compressedimages and video.[1] 
 
 \subsection{Other Assumptions}
 \lipsum[6]
