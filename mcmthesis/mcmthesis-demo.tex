@@ -212,8 +212,7 @@ Code ${\displaystyle C\left(W\right)=(c_{1},c_{2},\cdots ,c_{n})}$, which is the
 
 \emph{Goal}
 
-Let ${\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} {\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} $be the weighted path length of code ${\displaystyle C}$ C. Condition: {\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)} ${\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)} $for any code ${\displaystyle T\left(W\right)}$. 
-
+Let ${\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} {\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} $be the weighted path length of code ${\displaystyle C}$ C. Condition: ${\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)}$ ${\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)} $for any code ${\displaystyle T\left(W\right)}$.
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{Huffman.png}
@@ -322,6 +321,16 @@ From the above analysis, it can be seen that the probability of noise is low, an
 
 We mainly consider the compression ratio, peak signal-to noise ratio and subjective image quality judgment.
 
+Their mean variance is defined as
+\begin{equation}
+  MSE = \frac1{mn}\sum_{i=0}^{m=1}\sum_{j=0}^{n=1}{\left\|I(i,j)-K(i,j)\right\|}^2
+\end{equation}
+The peak signal-to-noise ratio is defined as
+\begin{equation}
+  PSNR = 10\cdot\log_{10}\left(\frac{{MAX}_I^2}{MSE}\right)=20\cdot\log_{10}\left(\frac{{MAX}_I}{\sqrt[]{MSE}}\right)
+\end{equation}
+
+The results are as follow:
 \begin{table}[h]
 \centering
 \caption{model \Rmnum{1}: the result of square images }
@@ -348,29 +357,44 @@ Quantitative Factors & Size & Compression Ratio & Signal to Noise Ratio\\
 \end{table}
 
 \begin{table}[h]
-  \centering
-  \caption{model \Rmnum{1}: the result of general images }
-  \begin{tabular}{|c|c|c|c|}
-  \hline
-  Quantitative Factors & Size & Compression Ratio & Signal to Noise Ratio\\
-  \hline
-  - 0.5 &512x512x3& 7.8405 & 35.8248 \\
-  \hline
-  - 3 &  512x512x3& 17.3444 &33.1444 \\
-  \hline
-  - 10 & 512x512x3& 25.4035& 29.7977 \\
-  \hline
-  \end{tabular}
-  \label{tab2}
-  \end{table}
+\centering
+\caption{model \Rmnum{1}: the result of general images }
+\begin{tabular}{|c|c|c|c|}
+\hline
+Quantitative Factors & Size & Compression Ratio & Signal to Noise Ratio\\
+\hline
+- 0.5 &512x512x3& 7.8405 & 35.8248 \\
+\hline
+- 3 &  512x512x3& 17.3444 &33.1444 \\
+\hline
+- 10 & 512x512x3& 25.4035& 29.7977 \\
+\hline
+\end{tabular}
+\label{tab2}
+\end{table}
+
+The following image showsthe contrast before and after compression.
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm]{lena3.png}
+\caption{model \Rmnum{1}:  before and after compression} \label{fig: model \Rmnum{1}:  before and after compression}
+\end{figure}
 
 We experimented with the model. It can be seen that the larger the quantification factor is, the larger the image compression ratio is, the smaller the signal-to-noise ratio is, and the worse the picture quality is. The model is not very different in different sizes of pictures. Performance indicators may fluctuate due to different sizes of images.
 The SNR is basically stable between 29-41, indicating that the extracted image information has not lost much. The compression ratio is between 7 and 25, and the compression performance is good.
 A high quality compression can be performed with a quantification factor of 0.5. In order to reduce the size of storage volume, more than 10 quantitative factors can be used, but the loss of image information is large.
 
 \subsection{Problem 3}
+For the example diagram given by the topic, we do the following.
+\begin{figure}[h]
+\centering
+\includegraphics[width=14cm]{o3.png}
+\caption{model \Rmnum{2}: the result of problem 3} \label{fig: model \Rmnum{2}: the result of problem 3}
+\end{figure} 
 
-
+It can be seen that the adaptive median filter can be used to deal with the noise in the case diagram.
+All similar "salt and pepper" noise can be handled well.
+When the PSNR was calculated, the PSNR was 31.358, indicating that the denoising effect was better.
 
 \section{Model Evaluation}
 \subsection{Model \Rmnum{1}}
@@ -408,33 +432,11 @@ A high quality compression can be performed with a quantification factor of 0.5.
 \end{itemize}
 
 \begin{thebibliography}{99}
-\bibitem{1} D.~E. KNUTH   The \TeX{}book  the American
-Mathematical Society and Addison-Wesley
-Publishing Company , 1984-1986.
-\bibitem{2}Lamport, Leslie,  \LaTeX{}: `` A Document Preparation System '',
-Addison-Wesley Publishing Company, 1986.
-\bibitem{3}\url{http://www.latexstudio.net/}
-\bibitem{4}\url{http://www.chinatex.org/}
+\bibitem{1}\url{http://blog.csdn.net/qq_29859497/article/details/72860371}
+\bibitem{2}\url{https://users.cs.cf.ac.uk/Dave.Marshall/Multimedia/node238.html}
 \end{thebibliography}
 
-\begin{appendices}
 
-\section{First appendix}
-
-\lipsum[13]
-
-Here are simulation programmes we used in our model as follow.\\
-
-\textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input matlab source:}}
-\lstinputlisting[language=Matlab]{./code/mcmthesis-matlab1.m}
-
-\section{Second appendix}
-
-some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input C++ source:}}
-\lstinputlisting[language=C++]{./code/mcmthesis-sudoku.cpp}
-
-\end{appendices}
-\end{document}
 
 %% 
 %% This work consists of these files mcmthesis.dtx,

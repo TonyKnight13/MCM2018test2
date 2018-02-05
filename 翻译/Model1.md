@@ -52,6 +52,6 @@ Output.
 Code ${\displaystyle C\left(W\right)=(c_{1},c_{2},\cdots ,c_{n})}$, which is the tuple of (binary) codewords, where$ {\displaystyle c_{i}}$ is the codeword for ${\displaystyle a_{i},1\leq i\leq n}$.
 
 Goal.
-Let ${\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} {\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} $be the weighted path length of code ${\displaystyle C}$ C. Condition: {\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)} ${\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)} $for any code ${\displaystyle T\left(W\right)}$
+Let ${\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} {\displaystyle L\left(C\left(W\right)\right)=\sum _{i=1}^{n}{w_{i}\times \mathrm {length} \left(c_{i}\right)}} $be the weighted path length of code ${\displaystyle C}$ C. Condition: ${\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)}$ ${\displaystyle L\left(C\left(W\right)\right)\leq L\left(T\left(W\right)\right)} $for any code ${\displaystyle T\left(W\right)}$
 [图片]
 For the above steps, the steps before the Zig-Zag scan is a lossy image compression to eliminate data redundancy, which is unble to recover after inverse transform. the steps after the Zig-Zag scan is a lossless image compression to eliminate encoding redundancy, which is able to reduce storage space needed.
